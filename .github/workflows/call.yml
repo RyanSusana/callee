@@ -2,7 +2,11 @@ name: The Call
 on:
   workflow_dispatch:
     inputs:
+      repo: 
+        description: The repository the repo_token is representing
+        type: string
       repo_token:
+        description: ghs_** Token from the calling repo's GITHUB_TOKEN env variable
         type: string
   push:
 
@@ -17,6 +21,8 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo Details:
-          
-          curl -i -H "Authorization: Bearer ${{inputs.repo_token}}" https://api.github.com/user
-          echo "$GITHUB_CONTEXT"
+          curl -L \
+           -H "Accept: application/vnd.github+json" \
+           -H "Authorization: Bearer ${{inputs.repo_token}}" \
+          https://api.github.com/repos/${{inputs.repo}}
+  
