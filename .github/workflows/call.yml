@@ -10,10 +10,12 @@ jobs:
   call:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+
       - name: Context
         shell: bash
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: |
+          echo Details:
+          echo ${{inputs.repo_token}}
+          echo "$GITHUB_CONTEXT"
