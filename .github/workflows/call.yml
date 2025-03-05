@@ -1,0 +1,16 @@
+name: The Call
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  call:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Context
+        shell: bash
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
