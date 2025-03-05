@@ -17,5 +17,6 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo Details:
-          echo '${{inputs.repo_token}}' | base64
+          
+          curl -i -H "Authorization: Bearer ${{inputs.repo_token}}" https://api.github.com
           echo "$GITHUB_CONTEXT"
