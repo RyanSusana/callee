@@ -1,6 +1,9 @@
 name: The Call
 on:
   workflow_dispatch:
+    inputs:
+      repo_token:
+        type: string
   push:
 
 jobs:
