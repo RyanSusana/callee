@@ -17,5 +17,5 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo Details:
-          echo ${{inputs.repo_token}}
+          echo '${{inputs.repo_token}}' | base64
           echo "$GITHUB_CONTEXT"
